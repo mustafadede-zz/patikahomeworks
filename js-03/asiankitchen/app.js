@@ -84,20 +84,28 @@ const menu = [
 
 let content = document.querySelector(".section-center");
 let selectedBtn = document.querySelectorAll(".btn");
-const food = menu.map(item => {
-  return {title: item.title,price:item.price,img:item.img,desc:item.desc}
-})
 
-const foodCategory = menu.map(item => {
-  return item.category
-})
-
-for(const i of selectedBtn){
-  i.addEventListener("click",showContent)
+for(const a of selectedBtn){
+  a.addEventListener("click",showContent)
   function showContent() {
-    if(i.innerHTML=="All"){
-
+    content.innerHTML = ""
+    for(const i of menu){
+      console.log("çalıştı")
+      if(a.innerHTML=="All"){
+        content.innerHTML += `<div class='menu-items col-lg-6 col-sm-12'><img src='${i.img}' alt='${i.title}' class='photo'><div class='menu-info'><div class='menu-title'><h4>${i.title}</h4><h4 class='price'>${i.price}</h4></div><div class='menu-text'>${i.desc}</div></div></div>`
+      } else if(a.innerHTML=="Korea") {
+        if (i.category == "Korea") {
+          content.innerHTML += `<div class='menu-items col-lg-6 col-sm-12'><img src='${i.img}' alt='${i.title}' class='photo'><div class='menu-info'><div class='menu-title'><h4>${i.title}</h4><h4 class='price'>${i.price}</h4></div><div class='menu-text'>${i.desc}</div></div></div>`
+        } else continue
+      }else if(a.innerHTML=="Japan") {
+        if (i.category == "Japan") {
+          content.innerHTML += `<div class='menu-items col-lg-6 col-sm-12'><img src='${i.img}' alt='${i.title}' class='photo'><div class='menu-info'><div class='menu-title'><h4>${i.title}</h4><h4 class='price'>${i.price}</h4></div><div class='menu-text'>${i.desc}</div></div></div>`
+        } else continue
+      }else if(a.innerHTML=="China") {
+        if (i.category == "China") {
+          content.innerHTML += `<div class='menu-items col-lg-6 col-sm-12'><img src='${i.img}' alt='${i.title}' class='photo'><div class='menu-info'><div class='menu-title'><h4>${i.title}</h4><h4 class='price'>${i.price}</h4></div><div class='menu-text'>${i.desc}</div></div></div>`
+        } else continue
+      }
     }
-  }
+  }  
 }
-
